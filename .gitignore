@@ -1,0 +1,9 @@
+.env
+.rawcache/
+data/*.db
+data/*.db-*
+data/photos/
+__pycache__/
+*.pyc
+logs/
+.venv/

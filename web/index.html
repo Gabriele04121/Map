@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TravelOS</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230ea5e9'/%3E%3Cpath d='M4 16h24M16 2c6 6 6 22 0 28M16 2c-6 6-6 22 0 28' stroke='white' fill='none' stroke-width='1.6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand"><span class="logo"></span><b>TravelOS</b></div>
+    <nav id="nav"></nav>
+    <div class="side-foot">
+      <button id="theme" class="ghost" title="Toggle dark/light">◐ Theme</button>
+      <div id="fxbox" class="muted small"></div>
+    </div>
+  </aside>
+  <main>
+    <header id="topbar">
+      <button id="burger" class="ghost">☰</button>
+      <div class="searchbox">
+        <input id="gsearch" type="search" placeholder="Search: Tokyo · Japan · FCO → Tokyo · cheap trip November" autocomplete="off">
+        <div id="gresults" class="dropdown hidden"></div>
+      </div>
+      <button id="bell" class="ghost" title="Price alerts">🔔<span id="bellcount" class="dot hidden"></span></button>
+    </header>
+    <div id="banner"></div>
+    <div id="view"></div>
+  </main>
+</div>
+<div id="modal-root"></div>
+<div id="toasts"></div>
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>
