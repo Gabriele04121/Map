@@ -94,3 +94,15 @@ class CacheTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class DotenvTests(unittest.TestCase):
+    def test_inline_comments_and_quotes(self):
+        import tempfile
+        from pathlib import Path
+        from travelos.core.config import Settings, load_dotenv
+        d = Path(tempfile.mkdtemp())
+        (d / ".env").write_text('A=1800   # comment\nB="x # not a comment"\nTRAVELPAYOUTS_TOKEN=\nTRAVELOS_MONITOR_INTERVAL=900  # s\n')
+        env = load_dotenv(d / ".env")
+        self.assertEqual((env["A"], env["B"], env["TRAVELPAYOUTS_TOKEN"]), ("1800", "x # not a comment", ""))
+        self.assertEqual(Settings.load(root=d, env={}).monitor_interval_s, 900)

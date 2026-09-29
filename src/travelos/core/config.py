@@ -53,6 +53,8 @@ def load_dotenv(path: Path) -> dict[str, str]:
         v = v.strip()
         if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
             v = v[1:-1]
+        else:
+            v = v.split(" #", 1)[0].strip()      # inline comment after an unquoted value
         out[k.strip()] = v
     return out
 
