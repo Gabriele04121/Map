@@ -1,0 +1,16 @@
+{
+  "_comment": "Hand-curated COARSE daily cost tiers in EUR (mid-range, 1 traveller sharing a double room). Not from an API - rough orders of magnitude for budgeting only. Edit to match your experience.",
+  "styles": {"budget": 0.6, "mid": 1.0, "comfort": 1.7},
+  "tiers": {
+    "T1": {"label": "very expensive", "hotel": 170, "food": 60, "transport": 15, "activities": 35,
+           "countries": ["CHE","NOR","ISL","SGP","LUX","DNK","MAC","BMU"]},
+    "T2": {"label": "expensive", "hotel": 120, "food": 45, "transport": 12, "activities": 30,
+           "countries": ["USA","GBR","FRA","ITA","DEU","NLD","AUT","BEL","IRL","SWE","FIN","AUS","NZL","CAN","JPN","ARE","ISR","QAT"]},
+    "T3": {"label": "moderate", "hotel": 90, "food": 35, "transport": 8, "activities": 22,
+           "countries": ["ESP","PRT","GRC","MLT","CYP","KOR","CZE","SVN","HRV","EST","LTU","LVA","SVK","HUN","POL","CHL","URY","OMN","SAU","TWN"]},
+    "T4": {"label": "budget-friendly", "hotel": 60, "food": 25, "transport": 6, "activities": 18,
+           "countries": ["TUR","MEX","CHN","MAR","ROU","BGR","SRB","MNE","ALB","MKD","BIH","GEO","ARM","BRA","ARG","COL","PER","CRI","PAN","ZAF","MYS","JOR","TUN","RUS","KAZ"]},
+    "T5": {"label": "very cheap", "hotel": 40, "food": 18, "transport": 5, "activities": 12,
+           "countries": ["THA","VNM","IDN","IND","EGY","PHL","KHM","LAO","NPL","LKA","BOL","ECU","GTM","MAR_","UZB","KGZ","TJK","BGD","PAK","KEN","TZA","UGA","ETH"]}
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "_comment": "Optional overrides. ttl values are seconds. chains: ordered provider names per capability (first that works wins). Names starting with 'mock-' are removed when TRAVELOS_ENABLE_MOCK=0.",
+  "ttl": {},
+  "chains": {}
+}

@@ -1,0 +1,29 @@
+{
+  "_comment": "Hand-curated interest tags per country (subjective, coarse). Used by the recommendation engine only when you set interests / have rated trips. Countries missing here are scored neutral for that factor.",
+  "tags": {
+    "ITA": ["culture","food","history","city","beach"], "FRA": ["culture","food","history","city","shopping"],
+    "ESP": ["beach","food","nightlife","culture","city"], "PRT": ["food","beach","city","culture","relax"],
+    "GRC": ["beach","history","relax","food"], "HRV": ["beach","history","nature","relax"],
+    "DEU": ["culture","city","history","nightlife"], "NLD": ["city","culture","relax"],
+    "GBR": ["culture","city","history","nightlife","shopping"], "IRL": ["nature","culture","nightlife"],
+    "AUT": ["nature","culture","city","adventure"], "CHE": ["nature","adventure","relax"],
+    "CZE": ["city","history","culture","nightlife"], "HUN": ["city","history","relax","nightlife"],
+    "POL": ["history","city","culture","food"], "ISL": ["nature","adventure","relax"],
+    "NOR": ["nature","adventure"], "SWE": ["city","nature","culture"], "FIN": ["nature","relax"], "DNK": ["city","food","culture"],
+    "TUR": ["history","food","culture","beach","city"], "EGY": ["history","culture","beach","adventure"],
+    "MAR": ["culture","food","adventure","history"], "TUN": ["beach","history","culture"],
+    "ZAF": ["nature","adventure","food"], "KEN": ["nature","adventure"], "TZA": ["nature","adventure","beach"],
+    "JPN": ["culture","food","city","history","nature","shopping"], "KOR": ["city","food","shopping","nightlife","culture"],
+    "CHN": ["culture","history","food","city"], "THA": ["beach","food","nightlife","adventure","relax"],
+    "VNM": ["food","nature","culture","adventure"], "IDN": ["beach","nature","adventure","relax","culture"],
+    "MYS": ["food","city","nature"], "SGP": ["city","food","shopping"], "IND": ["culture","history","food","adventure"],
+    "LKA": ["nature","beach","culture"], "NPL": ["adventure","nature","culture"],
+    "ARE": ["city","shopping","relax","beach"], "JOR": ["history","adventure","culture"],
+    "USA": ["city","nature","adventure","shopping","culture"], "CAN": ["nature","adventure","city"],
+    "MEX": ["food","culture","beach","history"], "PER": ["history","adventure","food","nature"],
+    "ARG": ["food","nature","city","nightlife"], "BRA": ["beach","nightlife","nature","culture"],
+    "COL": ["nature","culture","nightlife","adventure"], "CHL": ["nature","adventure","food"],
+    "CRI": ["nature","adventure","beach"], "CUB": ["culture","beach","nightlife"],
+    "AUS": ["nature","beach","adventure","city"], "NZL": ["nature","adventure"]
+  }
+}
