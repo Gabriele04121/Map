@@ -131,7 +131,8 @@ export class WorldMap {
       for (const r of this.regions) {
         const st = this.regionStatus(r) || [];
         const col = this.colorFor(st);
-        this.fillFeature(r, col ? col : C.land, C.text, 0.6, col ? 0.85 : 1);
+        const ccol = this.colorFor(this.status(this.regionsIso) || []);
+        this.fillFeature(r, col || ccol || C.land, C.text, 0.6, col ? 0.85 : ccol ? 0.45 : 1);   // regions inherit the country's status colour
         if (this.layers.analyzed && st.includes('analyzed')) this.fillFeature(r, null, C.analyzed, 2);
       }
       const sr = this.regions.find((r) => r.id === this.sel.regionId);
@@ -153,7 +154,7 @@ export class WorldMap {
       const st = this.cityStatus(c) || [], col = this.colorFor(st) || C.text, isSel = c.id === sel.cityId;
       const r = isSel ? 6 : c.capital ? 4.2 : 3;
       ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, TAU); ctx.fillStyle = isSel ? C.accent : col; ctx.fill(); ctx.strokeStyle = C.bg; ctx.lineWidth = 1.2; ctx.stroke();
-      if (isSel || inSel || k > 6) { ctx.font = `${isSel ? 700 : 500} 11px system-ui`; ctx.fillStyle = C.text; ctx.strokeStyle = C.bg; ctx.lineWidth = 3; ctx.strokeText(c.name, p[0] + 7, p[1] + 4); ctx.fillText(c.name, p[0] + 7, p[1] + 4); }
+      if (isSel || (inSel && (c.pop > 700e3 || c.capital || k > 14)) || k > 14) { ctx.font = `${isSel ? 700 : 500} 11px system-ui`; ctx.fillStyle = C.text; ctx.strokeStyle = C.bg; ctx.lineWidth = 3; ctx.strokeText(c.name, p[0] + 7, p[1] + 4); ctx.fillText(c.name, p[0] + 7, p[1] + 4); }
     }
   }
   drawMarkers() {
