@@ -14,7 +14,7 @@ class AppContext:
     def __init__(self, settings: Settings | None = None, http: HttpClient | None = None, db: Database | None = None,
                  geo: GeoEngine | None = None):
         self.settings = settings or Settings.load()
-        self.http = http or HttpClient(self.settings.http_timeout, self.settings.http_retries, offline=self.settings.offline)
+        self.http = http or HttpClient(self.settings.http_timeout, self.settings.http_retries, offline=self.settings.offline, contact=self.settings.contact_email)
         self.db = db or Database(self.settings.db_path)
         self.cache = Cache(self.db, self.settings.ttl)
         self.geo = geo or GeoEngine()

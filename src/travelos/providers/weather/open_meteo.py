@@ -2,6 +2,7 @@
 
 Free for non-commercial use, no API key, ~10k calls/day. https://open-meteo.com/en/terms
 """
+from __future__ import annotations
 from collections import defaultdict
 from datetime import date
 

@@ -1,4 +1,5 @@
 """Wikivoyage travel-guide text (CC BY-SA 4.0) via the MediaWiki API. Free, no key."""
+from __future__ import annotations
 import re
 
 from ..core.errors import ProviderError

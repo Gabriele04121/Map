@@ -17,10 +17,15 @@ MARKS = {"planned", "wishlist", "analyzed", "recommended"}
 PHOTO_TYPES = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif"}
 MAX_PHOTO = 6 * 1024 * 1024
 
+# Starter "avoid" list: countries for which governments broadly advise against travel. NOT authoritative and
+# NOT a political statement - it only keeps the recommender away from obvious no-go areas until live
+# advisory data is available. Edit freely in Preferences.
+STARTER_AVOID = ("UKR", "SYR", "IRQ", "AFG", "YEM", "LBY", "SOM", "SSD", "SDN", "MLI", "BFA", "NER", "HTI", "MMR", "PRK")
+
 DEFAULT_PREFS = {
     "home_airport": "FCO", "home_city": "Rome", "passport": "ITA", "display_currency": "EUR",
     "budget_eur": 1000, "trip_days_min": 5, "trip_days_max": 10, "temp_min": 18, "temp_max": 28,
-    "avoid": [], "transport": ["flight", "train"], "accommodation": "mid", "interests": [], "travelers": 1,
+    "avoid": list(STARTER_AVOID), "transport": ["flight", "train"], "accommodation": "mid", "interests": [], "travelers": 1,
     "max_stops": 1, "alt_airport_radius_km": 250,
 }
 INTERESTS = ["beach", "culture", "food", "nature", "nightlife", "adventure", "history", "shopping", "relax", "city"]

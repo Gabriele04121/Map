@@ -52,10 +52,11 @@ class RateLimiter:
 
 class HttpClient:
     def __init__(self, timeout: float = 12.0, retries: int = 2, backoff: float = 0.6,
-                 transport: Transport | None = None, offline: bool = False, sleep=time.sleep):
+                 transport: Transport | None = None, offline: bool = False, sleep=time.sleep, contact: str = ""):
         self.timeout, self.retries, self.backoff = timeout, retries, backoff
         self.transport = transport or urllib_transport
         self.offline = offline
+        self.user_agent = USER_AGENT + (f" contact:{contact}" if contact else "")
         self.limiter = RateLimiter()
         self._sleep = sleep
         self.host_intervals: dict[str, float] = {}
@@ -82,7 +83,7 @@ class HttpClient:
         if params:
             url += ("&" if "?" in url else "?") + urllib.parse.urlencode({k: v for k, v in params.items() if v is not None})
         host = urllib.parse.urlsplit(url).netloc
-        hdrs = {"User-Agent": USER_AGENT, "Accept": "application/json"}
+        hdrs = {"User-Agent": self.user_agent, "Accept": "application/json"}
         hdrs.update(headers or {})
         last: Exception | None = None
         if self._down_until.get(host, 0) > time.monotonic():

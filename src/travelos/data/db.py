@@ -89,12 +89,18 @@ class Database:
             c.execute(f"PRAGMA user_version={i + 1}")
         c.commit()
 
+    def _guard(self):
+        """The shared in-memory connection (tests) must be serialised; per-thread file connections need no lock."""
+        return self._write_lock if self._shared is not None else _NullLock()
+
     def query(self, sql: str, args: tuple = ()) -> list[dict]:
-        return [dict(r) for r in self.conn.execute(sql, args).fetchall()]
+        with self._guard():
+            return [dict(r) for r in self.conn.execute(sql, args).fetchall()]
 
     def one(self, sql: str, args: tuple = ()) -> dict | None:
-        r = self.conn.execute(sql, args).fetchone()
-        return dict(r) if r else None
+        with self._guard():
+            r = self.conn.execute(sql, args).fetchone()
+            return dict(r) if r else None
 
     def execute(self, sql: str, args: tuple = ()) -> int:
         with self._write_lock:
@@ -103,3 +109,11 @@ class Database:
             return cur.lastrowid
 
     _write_lock = threading.RLock()
+
+
+class _NullLock:
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False

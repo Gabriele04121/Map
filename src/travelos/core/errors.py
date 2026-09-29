@@ -1,4 +1,5 @@
 """Error taxonomy. Anything raised towards the API layer is a TravelOSError with a user-safe message."""
+from __future__ import annotations
 
 
 class TravelOSError(Exception):

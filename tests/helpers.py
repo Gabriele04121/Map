@@ -38,6 +38,7 @@ def make_ctx(routes=None, mock=True, keys=None, tmp=None):
         s.data_dir = Path(tmp)
     net = FakeNet(routes)
     http = HttpClient(timeout=1, retries=1, backoff=0, transport=net, sleep=lambda s: None)
+    http.limiter.wait = lambda host, interval: None      # no real sleeping in tests
     ctx = AppContext(s, http=http, db=Database(":memory:"))
     build_services(ctx)
     return ctx, net

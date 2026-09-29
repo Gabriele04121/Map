@@ -88,7 +88,8 @@ class RecommendationEngine:
         vs = visa_score(self.geo.visa_requirement(prefs["passport"], iso3)) if iso3 != prefs["passport"] else 1.0
         if vs is not None:
             f["visa_ease"] = vs
-            detail["visa_ease"] = f"passport {prefs['passport']}: {self.geo.visa_requirement(prefs['passport'], iso3) or 'home country'}"
+            req = self.geo.visa_requirement(prefs["passport"], iso3)
+            detail["visa_ease"] = f"passport {prefs['passport']}: " + (f"visa-free {req} days" if str(req).isdigit() else (req or "home country"))
         tier = daily_costs(iso3, c.get("income_group"))["tier"]
         f["cost_level"] = {"T1": 0.1, "T2": 0.35, "T3": 0.6, "T4": 0.8, "T5": 1.0}[tier]
         detail["cost_level"] = f"cost tier {tier} (coarse estimate)"
@@ -162,6 +163,9 @@ class RecommendationEngine:
         res = []
         for iso3, c in self.geo.countries.items():
             if iso3 in avoid or c["name"].lower() in avoid or c["continent"] == "Antarctica" or not c.get("un_member"):
+                continue
+            adv = self.ctx.cache.peek("safety", c.get("iso2") or "")
+            if adv and adv.value and adv.value.get("score", 0) >= 4.5:   # advisory says "extreme caution": never recommend
                 continue
             s = self.score_country(iso3, prefs, month, days, budget, home, allow_network)
             if s:

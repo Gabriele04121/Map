@@ -3,6 +3,7 @@
 Every offer has is_mock=True; the UI shows a MOCK badge and price statistics ignore them by default.
 Disable entirely with TRAVELOS_ENABLE_MOCK=0.
 """
+from __future__ import annotations
 import hashlib
 from datetime import date, timedelta
 

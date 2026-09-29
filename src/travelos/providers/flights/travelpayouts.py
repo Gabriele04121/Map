@@ -4,6 +4,7 @@
 * Rate limit is generous for personal use; results are NOT live availability: always confirm on the deep link.
 * Status: implemented against the public docs; NOT verified live from the dev sandbox (no network there).
 """
+from __future__ import annotations
 from ...core.errors import ProviderError
 from ...core.models import FlightOffer, FlightQuery, ProviderInfo
 from ..base import FlightProvider, register

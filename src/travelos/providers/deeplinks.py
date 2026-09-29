@@ -2,6 +2,7 @@
 
 Every builder returns [{"label", "url", "kind"}]. Only documented / stable URL formats are used.
 """
+from __future__ import annotations
 from urllib.parse import quote, urlencode
 
 

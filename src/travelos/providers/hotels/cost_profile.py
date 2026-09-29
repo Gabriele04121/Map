@@ -4,6 +4,7 @@ THIS IS AN ESTIMATE, not a live price. It exists so packages can be budgeted; it
 `estimate=True` with low confidence. Replace/extend with a real HotelProvider (Expedia Rapid, Booking
 Demand API... both require partnership approval) - see docs/providers.md.
 """
+from __future__ import annotations
 import json
 from functools import lru_cache
 
